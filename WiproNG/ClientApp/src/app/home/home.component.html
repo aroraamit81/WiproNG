@@ -1,0 +1,53 @@
+<div class="modal-content">
+  <div class="modal-header">
+
+    <h4 class="modal-title"><b>Add New Training</b></h4>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="trgForm">
+      <div class="form-group">
+        <input type="text" class="form-control" id="Name" placeholder="Training Name" formControlName="Name">
+
+      </div>
+      <div class="alert alert-danger" *ngIf="IsNameBlank">
+        Training Name is required
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" id="StartDate" placeholder="Training Start Date dd/mm/yyyy" formControlName="StartDate">
+      </div>
+      <div class="alert alert-danger" *ngIf="IsStartDateBlank">
+        Training Start Date is required
+      </div>
+      <div class="alert alert-danger" *ngIf="IsStartDateInvalid">
+        The Format of Start date is invalid must be dd/mm/yyyy
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="EndDate"
+               placeholder="Training End Date  dd/mm/yyyy" formControlName="EndDate" (change)="IsEndDateGreaterThanStartDate()">
+      </div>
+      <div class="alert alert-danger" *ngIf="IsEndDateBlank">
+        Training End Date is required
+      </div>
+      <div class="alert alert-danger" *ngIf="IsEndDateInvalid">
+        The Format of End date is invalid must be dd/mm/yyyy
+      </div>
+      <div class="alert alert-danger" *ngIf="InvalidDates">
+        End Date must be greater than Start Date
+      </div>
+
+
+    </form>
+    <div class="alert" *ngIf="message">
+      {{message}}
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="Submit" class="btn btn-primary" (click)="OnSubmit()" [disabled]="!IsFormValid">
+      <i class="fa fa-check"></i>
+      Confirm
+    </button>
+
+  </div>
+</div>
