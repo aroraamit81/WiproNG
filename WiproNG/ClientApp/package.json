@@ -48,7 +48,7 @@
     "karma-jasmine": "~1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
     "typescript": "~2.7.2",
-    "handlebars": "4.0.14"
+    "handlebars": "4.5.3"
   },
   "optionalDependencies": {
     "node-sass": "^4.9.3",
